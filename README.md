@@ -14,6 +14,16 @@ Primarily, names and functional annotations are added through manual curation. H
 
 
 ## Approach
+Goal: Given a set of curated domain architectures, can we predict a good name for related architectures. 
+Inputs: 
+a specific architecture string and a superfamily string
+Output:  a  name for the Architecture (CurNamne in our data Table)
+e.g. Arch 1 has a this ArchString(specific CDs): cd12718 cd16457 pfam02148
+and this superfamily string (the cluster that each of those CDs belongs to) : zf-UBP RRM_SF RING_Ubox
+and a curated name: BRCA1-associated protein
+can we precict a name for a related architecture with archstring: cd12718 cd16457 pfam02148 cl34174 and superfamily string : 
+zf-UBP RRM_SF RING_Ubox Smc  (curators gave this the same name) 
+
 
 ## Results
 
