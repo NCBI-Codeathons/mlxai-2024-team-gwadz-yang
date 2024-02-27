@@ -14,6 +14,17 @@ Primarily, names and functional annotations are added through manual curation. H
 
 
 ## Approach
+Categorization Model to auto-name SPARCLE architectures. (ordered arrangement of protein domains)
+
+1- organize data in one-hot encoded matrix. 
+	rows- curated architecture examples.  target value is curated names (28,055 categories, prior to simplification)
+	features/columns all possible specific-hits (domain) or superfamilies (domain clusters)= 41,888 
+2- simplify categories to eliminate overly specific names and to increase # examples/category 
+3- choose >=1  ML models to evaluate data (e.g. Decisions trees, Deep Learning, Clustering?) 
+4- choose strategy for training /test given sparse data
+5- possible to add tokenized "title names" as features?
+6- evaluate most promising model- tweak, if possible. 
+7- option - test trained model vs uncurated data to estimate impact. 
 
 ## Results
 
