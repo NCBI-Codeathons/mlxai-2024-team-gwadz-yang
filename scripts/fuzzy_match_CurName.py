@@ -15,9 +15,11 @@ from fuzzywuzzy import process
 import pandas as pd
 from pathlib import Path
 
+# set your local working directory
 local_dir = "/Users/christopher/Documents/Notes/misc/codeathon"
 os.chdir(local_dir) 
 
+# set to path of team GitHub
 git_dir = "/Users/christopher/Documents/GitHub/NCBI-Codeathons/mlxai-2024-team-gwadz-yang"
 sfile = "{}/data/SPARCLE_IDS_curated.csv".format(git_dir)
 
@@ -106,6 +108,36 @@ df.sort_values(by="pCurName",inplace=True)
 
 out_file = "grouped_SPARCLE_IDS_curated_{}.csv".format(threshold)
 df.to_csv(out_file,index=False)
+
+
+
+
+
+
+
+
+
+
+
+
+
+from Bio import pairwise2
+
+# List of similar text strings
+text_strings = ["apple", "aple", "ample", "appple"]
+
+# Reference string (choose one or define your own)
+reference_string = text_strings[0]
+
+# Perform pairwise alignment with the reference string
+alignments = [pairwise2.align.globalxx(reference_string, s) for s in text_strings]
+
+# Calculate consensus string
+consensus_string = ""
+for alignment in alignments:
+    consensus_string += alignment[0][0][2]
+
+print("Consensus String:", consensus_string)
 
 
 
