@@ -104,6 +104,6 @@ For general questions about NCBI software and tools, please visit: [NCBI Contact
 * Marc Gwadz, Affiliation (Team Leader)
 * Mingzhang Yang, Affiliation (Technical Lead)
 * Christopher Meyer, University of Chicago (Writer)
-* Franziska Ahrend, Affiliation
+* Franziska Ahrend, ORISE Fellow at NIDDK, NIH
 * Yixiang Deng, Affiliation
 * Shaojun Xie, Affiliation
