@@ -46,7 +46,7 @@ Primarily, names and functional annotations are added through manual curation. H
 * RQ1 Methods
 
 Inputs: 
-A matrix of one-hot encoded curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures.
+A matrix of SentencePiece tokenized curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures.
 
 
 Output: 
@@ -62,7 +62,7 @@ Can we predict a name for a related architecture with archstring: `cd12718 cd164
 * RQ2 Methods
 
 Inputs: 
-A matrix of one-hot encoded curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures with the addition of Word2Vec embedded architecture title strings (`TitleString`).
+A matrix of SentencePiece tokenized curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures with the addition of Word2Vec embedded architecture title strings (`TitleString`).
 
 
 Output: 
@@ -77,13 +77,13 @@ Can we predict a name for a related architecture with archstring: `cd12718 cd164
 
 Categorization Model to auto-name SPARCLE architectures (ordered arrangement of protein domains).
 
-1. organize data in one-hot encoded matrix. 
+1. organize data into encoded matrix using SentencePiece tokenization
 	rows- curated architecture examples.  target value is curated names (28,055 categories, prior to simplification)
 	features/columns all possible specific-hits (domain) or superfamilies (domain clusters)= 41,888 
 2. simplify categories to eliminate overly specific names and to increase # examples/category 
 3. choose >=1  ML models to evaluate data (e.g. Decisions trees, Deep Learning, Clustering?) 
 4. choose strategy for training /test given sparse data
-5. possible to add tokenized "title names" as features?
+5. possible to add tokenized "title strings" as features?
 6. evaluate most promising model- tweak, if possible. 
 7. option - test trained model vs uncurated data to estimate impact. 
 
