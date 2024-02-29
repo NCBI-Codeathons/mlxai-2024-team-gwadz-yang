@@ -101,7 +101,7 @@ For general questions about NCBI software and tools, please visit: [NCBI Contact
 
 ## TEAM MEMBERS
 
-* Marc Gwadz, Affiliation (Team Leader)
+* Marc Gwadz, Affiliation (Team Leader) NCBI, NLM, NIH
 * Mingzhang Yang, Affiliation (Technical Lead)
 * Christopher Meyer, University of Chicago (Writer)
 * Franziska Ahrend, Affiliation
