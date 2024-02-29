@@ -29,6 +29,8 @@ Primarily, names and functional annotations are added through manual curation. H
 ![image](https://github.com/NCBI-Codeathons/mlxai-2024-team-gwadz-yang/assets/35601022/72302944-3ad2-482f-a0d7-5ebd7a87f633)
 ![image](https://github.com/NCBI-Codeathons/mlxai-2024-team-gwadz-yang/assets/35601022/fc5f012e-0666-443a-a73c-212da92ad77f)
 
+![image](https://github.com/NCBI-Codeathons/mlxai-2024-team-gwadz-yang/assets/35601022/ac748a8c-7974-4c79-9f4b-58efddaacf88)
+
 
 ### Scope and Research Questions
 
