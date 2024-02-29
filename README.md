@@ -36,7 +36,7 @@ Primarily, names and functional annotations are added through manual curation. H
 
 * RQ2: Will addition of architecture title strings (`TitleString`) to the input matrix improve prediction accuracy of curated names (`CurName`)?
 
-![image](https://github.com/NCBI-Codeathons/mlxai-2024-team-gwadz-yang/assets/FA_slide_training_testing.png)
+![image](https://github.com/NCBI-Codeathons/mlxai-2024-team-gwadz-yang/docs/images/FA_slide_training_testing.png)
 
 
 ## METHODS
