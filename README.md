@@ -109,4 +109,4 @@ For general questions about NCBI software and tools, please visit: [NCBI Contact
 * Christopher Meyer, University of Chicago (Writer)
 * Franziska Ahrend, ORISE Fellow at NIDDK, NIH
 * Yixiang Deng, Affiliation
-* Shaojun Xie, Affiliation
+* Shaojun Xie, Advanced Biomedical and Computational Science, Frederick National Laboratory for Cancer Research, Frederick, MD, USA
