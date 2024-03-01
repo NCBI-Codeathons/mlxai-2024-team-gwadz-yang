@@ -82,7 +82,7 @@ In order to evaluate the accuracy of curated name predictions for the protein do
 
 Much of our time was dedicated to cleaning the original SPARCLE data and evaluating different input variable tokenization methods.
 
-Given more time, we would have liked to train and evaluate multiple NLP models and experiment with various tokenization methods and the influence of including different input variables, like `TitleStrings`. However, given the time constraints of the codeathon, we were only able to get preliminary results for our decision tree model. We also lacked time to dedicate to exploring model validation. 
+Given more time, we would have liked to train and evaluate multiple NLP models and experiment with various tokenization methods and the influence of including different input variables, like `TitleStrings`. However, given the time constraints of the codeathon, we were only able to get preliminary results for our decision tree model. We also lacked time to dedicate to exploring model validation strategies. 
 
 
 ## References
