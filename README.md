@@ -43,52 +43,53 @@ Primarily, names and functional annotations are added through manual curation. H
 
 ## METHODS
 
-* RQ1 Methods
-
-Inputs: 
-A matrix of SentencePiece tokenized curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures.
-
-
-Output: 
-Curated names (`CurName`) for uncurated architectures given their specific conserved domains (`SpecificArch`) and superfaimly architectures (`superfamilyarch`).
-
-
-Example: 
-Architecture 1 (`ArchID` 1) has specific CDs (`SpecificArch`): `cd12718 cd16457 pfam02148`, and this superfamily string (`superfamilyArch`, the cluster that each of those CDs belongs to): `zf-UBP RRM_SF RING_Ubox` and a curated name: `BRCA1-associated protein`.
-
-Can we predict a name for a related architecture with archstring: `cd12718 cd16457 pfam02148 cl34174` and superfamily string: `zf-UBP RRM_SF RING_Ubox Smc`? Expert curators have given this the same name.
-
-
-* RQ2 Methods
-
-Inputs: 
-A matrix of SentencePiece tokenized curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures with the addition of Word2Vec embedded architecture title strings (`TitleString`).
-
-
-Output: 
-Curated names (`CurName`) for uncurated architectures given their specific conserved domains (`SpecificArch`), superfaimly architectures (`superfamilyarch`), and architecture title strings (`TitleString`).
-
-
-Example: 
-Architecture 1 (`ArchID` 1) has specific CDs (`SpecificArch`): `cd12718 cd16457 pfam02148`, superfamily string (`superfamilyArch`): `zf-UBP RRM_SF RING_Ubox`, curated name: `BRCA1-associated protein`, and title string (`TitleString`): `brca1-associated protein`.
-
-Can we predict a name for a related architecture with archstring: `cd12718 cd16457 pfam02148 cl34174` and superfamily string: `zf-UBP RRM_SF RING_Ubox Smc`?
+### Overall Strategy
 
 
 Categorization Model to auto-name SPARCLE architectures (ordered arrangement of protein domains).
 
-1. organize data into encoded matrix using SentencePiece tokenization
-	rows- curated architecture examples.  target value is curated names (28,055 categories, prior to simplification)
-	features/columns all possible specific-hits (domain) or superfamilies (domain clusters)= 41,888 
-2. simplify categories to eliminate overly specific names and to increase # examples/category 
-3. choose >=1  ML models to evaluate data (e.g. Decisions trees, Deep Learning, Clustering?) 
-4. choose strategy for training /test given sparse data
-5. possible to add tokenized "title strings" as features?
-6. evaluate most promising model- tweak, if possible. 
-7. option - test trained model vs uncurated data to estimate impact. 
+1. Preprocess the output variables by simplifying the ~14k original curated names to 11.8k to eliminate overly specific names and increase the number of examples per category.
+2. Preprocess the input variables by lowercasing and removal of uninformative, common words, like prepositions, articles, and non-specific terms like "domain" and "protein".
+3. Organize curated input/output data variables into encoded matrix using SentencePiece tokenization.
+4. Train a decision tree model using the SentencePiece encoded matrix.
+5. Add tokenized "title strings" as features to evaluate whether this sparsely populated, additional data improves model accuracy.
+6. Test trained model vs. uncurated data to estimate impact.
+
+### RQ1 Methods
+
+* Inputs: 
+A matrix of SentencePiece tokenized curated names (`CurName`) and associated specific (`SpecificArch`) and superfamily (`superfamilyarch`) architectures derived from the SPARCLE table of 42,766 curarted protein architectures.
+
+
+* Output: 
+Curated names (`CurName`) for uncurated architectures given their specific conserved domains (`SpecificArch`) and superfaimly architectures (`superfamilyarch`).
+
+
+* Example: 
+Architecture 1 (`ArchID` 1) has specific CDs (`SpecificArch`): `cd12718 cd16457 pfam02148`, and this superfamily string (`superfamilyArch`, the cluster that each of those CDs belongs to): `zf-UBP RRM_SF RING_Ubox` and a curated name: `BRCA1-associated protein`. Can we predict a name for a related architecture with archstring: `cd12718 cd16457 pfam02148 cl34174` and superfamily string: `zf-UBP RRM_SF RING_Ubox Smc`? Expert curators have given this the same name.
+
+
+### RQ2 Methods
+
+* The same methodology will be used for RQ2 with the addition of SentencePiece tokenized `TitleStrings` to the input vectors.
 
 
 ## Results
+
+In order to evaluate the accuracy of curated name predictions for the protein domains, we 
+
+## Discussion & Conclusion
+
+Much of our time was dedicated to cleaning the original SPARCLE data and evaluating different input variable tokenization methods.
+
+Given more time, we would have liked to train and evaluate multiple NLP models and experiment with various tokenization methods and the influence of including different input variables, like `TitleStrings`. However, given the time constraints of the codeathon, we were only able to get preliminary results for our decision tree model. We also lacked time to dedicate to exploring model validation. 
+
+
+## References
+Marchler-Bauer A, Bo Y, Han L, He J, Lanczycki CJ, Lu S, Chitsaz F, Derbyshire MK, Geer RC, Gonzales NR, Gwadz M, Hurwitz DI, Lu F, Marchler GH, Song JS, Thanki N, Wang Z, Yamashita RA, Zhang D, Zheng C, Geer LY, Bryant SH. CDD/SPARCLE: functional classification of proteins via subfamily domain architectures. Nucleic Acids Res. 2017 Jan 4;45(D1):D200-D203. doi: 10.1093/nar/gkw1129. Epub 2016 Nov 29. [PubMed PMID: 27899674] [Full Text at Oxford Academic]
+
+Kudo T, Richardson J. (2018) SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing. arXiv:1808.06226v1 [cs.CL] https://doi.org/10.48550/arXiv.1808.06226
+
 
 ## Future Work
 
