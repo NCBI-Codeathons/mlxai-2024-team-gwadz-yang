@@ -1,0 +1,50 @@
+Domain ID: cl00075
+Short Name: HATPase Superfamily 
+Full Name: Histidine kinase-like ATPase domain
+Description: This cl00075 superfamily includes the histidine kinase-like ATPase (HATPase) domains of several ATP-binding proteins such as histidine kinase, DNA gyrase B, topoisomerases, heat shock protein 90 (HSP90), phytochrome-like ATPases and DNA mismatch repair proteins. Domains belonging to this superfamily are also referred to as GHKL (gyrase, heat-shock protein 90, histidine kinase, MutL) ATPase domains.
+
+Curated CD Hierarchy (related CDs) are:
+cd16915 HATPase_DpiB-CitA-like
+cd16916 HATPase_CheA-like
+cd16917 HATPase_UhpB-NarQ-NarX-like
+cd16918 HATPase_Glnl-NtrB-like
+cd16919 HATPase_CckA-like
+cd16920 HATPase_TmoS-FixL-DctS-like
+cd16921 HATPase_FilI-like
+cd16922 HATPase_EvgS-ArcB-TorS-like
+cd16923 HATPase_VanS-like
+cd16924 HATPase_YpdA-YehU-LytS-like
+cd16955 HATPase_YpdA-like
+cd16956 HATPase_YehU-like
+cd16957 HATPase_LytS-like
+cd16925 HATPase_TutC-TodS-like
+cd16926 HATPase_MutL-MLH-PMS-like
+cd16927 HATPase_Hsp90-like
+cd16928 HATPase_GyrB-like
+cd16929 HATPase_PDK-like
+cd16930 HATPase_TopII-like
+cd16931 HATPase_MORC-like
+cd16932 HATPase_Phy-like
+cd16933 HATPase_TopVIB-like
+cd16934 HATPase_RsbT-like
+cd16935 HATPase_AgrC-ComD-like
+cd16936 HATPase_RsbW-like
+cd16937 HATPase_SMCHD1-like
+cd16938 HATPase_ETR2_ERS2-EIN4-like
+cd16939 HATPase_RstB-like
+cd16940 HATPase_BasS-like
+cd16942 HATPase_SpoIIAB-like
+cd16943 HATPase_AtoS-like
+cd16944 HATPase_NtrY-like
+cd16945 HATPase_CreC-like
+cd16946 HATPase_BaeS-like
+cd16947 HATPase_YcbM-like
+cd16948 HATPase_BceS-YxdK-YvcQ-like
+cd16949 HATPase_CpxA-like
+cd16950 HATPase_EnvZ-like
+cd16951 HATPase_EL346-LOV-HK-like
+cd16952 HATPase_EcPhoR-like
+cd16953 HATPase_BvrS-ChvG-like
+cd16954 HATPase_PhoQ-like
+cd16975 HATPase_SpaK_NisK-like
+cd16976 HATPase_HupT_MifS-like
