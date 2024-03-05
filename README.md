@@ -104,9 +104,11 @@ For general questions about NCBI software and tools, please visit: [NCBI Contact
 
 ## TEAM MEMBERS
 
-* Marc Gwadz, NCBI, NLM, NIH (Team Leader)
-* Mingzhang Yang, NCBI, NLM, NIH (Technical Lead)
+
+* Marc Gwadz, Affiliation (Team Leader) NCBI, NLM, NIH
+* Mingzhang Yang, Affiliation (Technical Lead) NCBI, NLM, NIH
 * Christopher Meyer, University of Chicago (Writer)
 * Franziska Ahrend, ORISE Fellow at NIDDK, NIH
-* Yixiang Deng, Post-doc  MIT, Harvard
-* Shaojun Xie, Advanced Biomedical and Computational Science, Frederick National Laboratory for Cancer Research, Frederick, MD, USA
+* Yixiang Deng, Affiliation  Postdoctoral Fellow: MIT and Harvard
+* Shaojun Xie, Affiliation NCI, NIH
+
