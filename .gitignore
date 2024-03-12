@@ -8,3 +8,7 @@ data/SPARCLE_IDS_curated.mtx4ml.tsv
 data/SPARCLE_IDS_all_current.csv
 data/SPARCLE_IDS_UNcurated_TITLES.csv
 data/encoded_features_uncurated.pickle
+
+data_v2/
+data_v2/UnCuratedArchs_culled.csv
+
