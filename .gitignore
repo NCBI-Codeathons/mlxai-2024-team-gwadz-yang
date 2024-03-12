@@ -4,6 +4,7 @@ venv
 *.pyo
 *.pyd
 scripts/.ipynb_checkpoints/
+scripts_v2/.ipynb_checkpoints/
 data/SPARCLE_IDS_curated.mtx4ml.tsv
 data/SPARCLE_IDS_all_current.csv
 data/SPARCLE_IDS_UNcurated_TITLES.csv
