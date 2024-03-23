@@ -5,7 +5,7 @@ from transformers import DataCollatorForLanguageModeling
 import torch
 
 # Read the CSV file into a pandas DataFrame
-File_path = './curName_specificArch_superfamilyArch.csv'
+File_path = '../curName_specificArch_superfamilyArch.csv'
 with open(File_path, 'r') as f:
     texts = [line.strip() for line in f.readlines()]
 
