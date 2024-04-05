@@ -6,8 +6,12 @@ parser = argparse.ArgumentParser(description='Tokenize input text using a fine-t
 parser.add_argument('--model_path', type=str, required=True, help='Path to the fine-tuned BiomedBERT model')
 args = parser.parse_args()
 
+print(f"Model path: {args.model_path}")
+
 # Load the fine-tuned model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+
+# Load the fine-tuned model
 model = AutoModelForMaskedLM.from_pretrained(args.model_path)
 
 # Define the input text
