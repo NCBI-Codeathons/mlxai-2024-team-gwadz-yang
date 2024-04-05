@@ -9,7 +9,7 @@ args = parser.parse_args()
 print(f"Model path: {args.model_path}")
 
 # Load the fine-tuned model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
 
 # Load the fine-tuned model
 model = AutoModelForMaskedLM.from_pretrained(args.model_path)
