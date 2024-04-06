@@ -39,7 +39,7 @@ df = pd.DataFrame({'CurName': data['CurName'], 'features': embeddings})
 print(df.head())
 
 # Save the DataFrame
-output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biobert.pkl')
+output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
 df.to_pickle(output_file)
 
 
