@@ -1,5 +1,6 @@
 import pandas as pd
-from transformers import BertTokenizer, BertModel
+# from transformers import BertTokenizer, BertModel
+from transformers import AutoTokenizer, AutoModel
 import torch
 import os
 
@@ -11,8 +12,9 @@ FILE_curated_SPARCLE_data = os.path.join(DATA_DIR, 'CuratedArch_simplifiedNames_
 data = pd.read_csv(FILE_curated_SPARCLE_data, usecols=['CurName', 'SpecificArch', 'superfamilyarch', 'TitleStrings'])
 
 # Initialize the BERT tokenizer and model
-tokenizer = BertTokenizer.from_pretrained('microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract')
-model = BertModel.from_pretrained('./BiomedBERT/pretrained_model/')
+tokenizer = AutoTokenizer.from_pretrained('microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract')
+model = AutoModel.from_pretrained('./BiomedBERT/pretrained_model/')
+
 
 # Function to tokenize and encode the text data
 def encode_data(row):
@@ -41,3 +43,4 @@ print(df.head())
 output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_finetuned_biomedbert.pkl')
 df.to_pickle(output_file)
 
+090

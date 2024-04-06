@@ -1,5 +1,5 @@
 import pandas as pd
-from transformers import AutoTokenizer, AutoModelForMaskedLM
+from transformers import AutoTokenizer, AutoModel
 import torch
 import os
 
@@ -12,7 +12,7 @@ data = pd.read_csv(FILE_curated_SPARCLE_data, usecols=['CurName', 'SpecificArch'
 
 # Initialize the BERT tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
-model = AutoModelForMaskedLM.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+model = AutoModel.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
 
 
 # Function to tokenize and encode the text data
