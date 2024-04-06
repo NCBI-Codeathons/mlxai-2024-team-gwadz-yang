@@ -43,4 +43,3 @@ print(df.head())
 output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_finetuned_biomedbert.pkl')
 df.to_pickle(output_file)
 
-090
