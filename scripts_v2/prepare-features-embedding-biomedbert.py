@@ -31,8 +31,7 @@ embeddings = []
 with torch.no_grad():
     for encoded_input in encoded_data:
         output = model(**encoded_input)
-        # embedding = output.last_hidden_state.mean(dim=1).squeeze().numpy()
-        embedding = output.logits[:, 0, :].squeeze().numpy()
+        embedding = output.last_hidden_state.mean(dim=1).squeeze().numpy()
         embeddings.append(embedding)
 
 # save the embeddings as a DataFrame
