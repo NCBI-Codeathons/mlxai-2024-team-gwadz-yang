@@ -9,6 +9,7 @@ FILE_curated_SPARCLE_data = os.path.join(DATA_DIR, 'CuratedArch_simplifiedNames_
 
 # Load your data into a pandas DataFrame
 data = pd.read_csv(FILE_curated_SPARCLE_data, usecols=['CurName', 'SpecificArch', 'superfamilyarch', 'TitleStrings'])
+data.dropna(subset=['TitleStrings'], inplace=True)
 
 # Initialize the BERT tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
