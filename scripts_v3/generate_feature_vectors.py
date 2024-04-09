@@ -18,7 +18,8 @@ model = AutoModel.from_pretrained('./BiomedBERT/pretrained_model/')
 
 # Function to tokenize and encode the text data
 def encode_data(row):
-    text = f"{row['SpecificArch']} <sep> {row['superfamilyarch']} <sep> {row['TitleStrings']}"
+    # text = f"{row['SpecificArch']} <sep> {row['superfamilyarch']} <sep> {row['TitleStrings']}"
+    text = row['TitleStrings']
     encoded_input = tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors='pt')
     return encoded_input
 
