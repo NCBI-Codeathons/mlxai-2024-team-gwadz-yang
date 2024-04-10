@@ -51,8 +51,11 @@ def mean_pooling(model_output, attention_mask):
 
 
 # Load AutoModel from huggingface model repository
-tokenizer = AutoTokenizer.from_pretrained("microsoft/biogpt")
-model = AutoModel.from_pretrained("microsoft/biogpt")
+# tokenizer = AutoTokenizer.from_pretrained("microsoft/biogpt")
+# model = AutoModel.from_pretrained("microsoft/biogpt")
+
+tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+model = AutoModel.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
 
 # Compute token embeddings
 embeddings = []
@@ -79,5 +82,6 @@ df = pd.DataFrame({'CurName': df['CurName'], 'features': embeddings})
 print(df.head(), df.shape)
 
 # Save the DataFrame
-output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biogpt.pkl')
+# output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biogpt.pkl')
+output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
 df.to_pickle(output_file)
