@@ -62,7 +62,7 @@ output_dim = len(np.unique(encoded_labels))
 model = ProteinFamilyClassifier(input_dim, output_dim)
 
 # Adjust learning rate and optimizer
-optimizer = optim.Adam(model.parameters(), lr=0.01)  # Adjust learning rate
+optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)  # Use SGD with momentum
 
 # Implement learning rate scheduling
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
