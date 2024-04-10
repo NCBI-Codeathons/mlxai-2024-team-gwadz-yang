@@ -2,7 +2,6 @@ from transformers import AutoTokenizer, AutoModel
 import torch
 import pandas as pd
 import os
-import pickle
 
 
 DATA_DIR = '../data_v2'
@@ -55,8 +54,11 @@ def mean_pooling(model_output, attention_mask):
 # tokenizer = AutoTokenizer.from_pretrained("microsoft/biogpt")
 # model = AutoModel.from_pretrained("microsoft/biogpt")
 
-tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
-model = AutoModel.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+# tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+# model = AutoModel.from_pretrained("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+model = AutoModel.from_pretrained("bert-base-uncased")
 
 # Compute token embeddings
 embeddings = []
@@ -84,5 +86,7 @@ print(df.head(), df.shape)
 
 # Save the DataFrame
 # output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biogpt.pkl')
-output_file = os.path.join(RESULTS_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
+# output_file = os.path.join(RESULTS_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
+output_file = os.path.join(RESULTS_DIR, 'Dataframe_CurName_features_embedding_bert.pkl')
+
 df.to_pickle(output_file)
