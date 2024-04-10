@@ -38,41 +38,27 @@ X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train)
 y_test_tensor = torch.tensor(y_test)
 
-# Define a more complex neural network architecture with increased layers and neurons
+# Define a simpler neural network architecture
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(ProteinFamilyClassifier, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 1024)
-        self.bn1 = nn.BatchNorm1d(1024)
-        self.fc2 = nn.Linear(1024, 512)
-        self.bn2 = nn.BatchNorm1d(512)
-        self.fc3 = nn.Linear(512, 256)
-        self.bn3 = nn.BatchNorm1d(256)
-        self.fc4 = nn.Linear(256, output_dim)
+        self.fc1 = nn.Linear(input_dim, 128)
+        self.fc2 = nn.Linear(128, output_dim)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.5)
 
     def forward(self, x):
         x = self.fc1(x)
-        x = self.bn1(x)
         x = self.relu(x)
         x = self.dropout(x)
         x = self.fc2(x)
-        x = self.bn2(x)
-        x = self.relu(x)
-        x = self.dropout(x)
-        x = self.fc3(x)
-        x = self.bn3(x)
-        x = self.relu(x)
-        x = self.dropout(x)
-        x = self.fc4(x)
         return x
 
 # Define hyperparameters
 input_dim = X_train.shape[1]
 output_dim = len(np.unique(encoded_labels))
 
-# Initialize the model with the updated architecture
+# Initialize the model with the simpler architecture
 model = ProteinFamilyClassifier(input_dim, output_dim)
 
 # Adjust learning rate and optimizer
