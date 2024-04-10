@@ -38,12 +38,14 @@ X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train)
 y_test_tensor = torch.tensor(y_test)
 
-# Define a simpler neural network architecture
+# Define a neural network architecture with more hidden layers and dropout
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(ProteinFamilyClassifier, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 128)
-        self.fc2 = nn.Linear(128, output_dim)
+        self.fc1 = nn.Linear(input_dim, 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(64, output_dim)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.5)
 
@@ -52,17 +54,23 @@ class ProteinFamilyClassifier(nn.Module):
         x = self.relu(x)
         x = self.dropout(x)
         x = self.fc2(x)
+        x = self.relu(x)
+        x = self.dropout(x)
+        x = self.fc3(x)
+        x = self.relu(x)
+        x = self.dropout(x)
+        x = self.fc4(x)
         return x
 
 # Define hyperparameters
 input_dim = X_train.shape[1]
 output_dim = len(np.unique(encoded_labels))
 
-# Initialize the model with the simpler architecture
+# Initialize the model with the updated architecture
 model = ProteinFamilyClassifier(input_dim, output_dim)
 
 # Adjust learning rate and optimizer
-optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)  # Use SGD with momentum
+optimizer = optim.Adam(model.parameters(), lr=0.0001)  # Adjust learning rate
 
 # Implement learning rate scheduling
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
