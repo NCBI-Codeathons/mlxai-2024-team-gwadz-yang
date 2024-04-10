@@ -4,6 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
 import os
+from sklearn.preprocessing import LabelEncoder
 
 # Load the embeddings DataFrame
 DATA_DIR = '../data_v2'
@@ -14,8 +15,10 @@ df = pd.read_pickle(FILE_DATAFRAME)
 embeddings = df['features'].tolist()
 labels = df['CurName'].tolist()
 
-print(embeddings[0:5])
-print(labels[0:5])
+# Encode protein family names as integers
+label_encoder = LabelEncoder()
+labels = label_encoder.fit_transform(labels)
+
 
 # Define a simple feedforward neural network
 class ProteinFamilyClassifier(nn.Module):
