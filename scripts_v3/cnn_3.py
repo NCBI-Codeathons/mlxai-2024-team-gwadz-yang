@@ -42,10 +42,10 @@ y_test_tensor = torch.tensor(y_test)
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(ProteinFamilyClassifier, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 64)
-        self.fc4 = nn.Linear(64, output_dim)
+        self.fc1 = nn.Linear(input_dim, 512)
+        self.fc2 = nn.Linear(512, 256)
+        self.fc3 = nn.Linear(256, 128)
+        self.fc4 = nn.Linear(128, output_dim)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.5)
 
