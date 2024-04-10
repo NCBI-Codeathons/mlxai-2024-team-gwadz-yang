@@ -7,6 +7,7 @@ import pickle
 
 DATA_DIR = '../data_v2'
 FILE_curated_SPARCLE_data = os.path.join(DATA_DIR, 'CuratedArch_simplifiedNames_culled.csv')
+RESULTS_DIR = '../data_v3'
 
 
 # Load your data into a pandas DataFrame
@@ -83,5 +84,5 @@ print(df.head(), df.shape)
 
 # Save the DataFrame
 # output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biogpt.pkl')
-output_file = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
+output_file = os.path.join(RESULTS_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
 df.to_pickle(output_file)
