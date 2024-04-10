@@ -72,8 +72,8 @@ model = ProteinFamilyClassifier(input_dim, output_dim)
 # Adjust learning rate and optimizer
 optimizer = optim.Adam(model.parameters(), lr=0.0001)  # Adjust learning rate
 
-# Implement learning rate scheduling
-scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
+# Implement learning rate scheduling with a different gamma value
+scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.5)  # Adjust gamma value
 
 # Define data loaders
 batch_size = 64
