@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
 # Load the embeddings DataFrame
-DATA_DIR = '../data_v2'
+DATA_DIR = '../data_v3'
 FILE_DATAFRAME = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_biomedbert.pkl')
 df = pd.read_pickle(FILE_DATAFRAME)
 
@@ -42,8 +42,8 @@ y_test_tensor = torch.tensor(y_test)
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(ProteinFamilyClassifier, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 128)
-        self.fc2 = nn.Linear(128, output_dim)
+        self.fc1 = nn.Linear(input_dim, 512)
+        self.fc2 = nn.Linear(512, output_dim)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.5)
 
