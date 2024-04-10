@@ -39,11 +39,27 @@ y_train_tensor = torch.tensor(y_train)
 y_test_tensor = torch.tensor(y_test)
 
 # Define a simpler neural network architecture
+# class ProteinFamilyClassifier(nn.Module):
+#     def __init__(self, input_dim, output_dim):
+#         super(ProteinFamilyClassifier, self).__init__()
+#         self.fc1 = nn.Linear(input_dim, 128)
+#         self.fc2 = nn.Linear(128, output_dim)
+#         self.relu = nn.ReLU()
+#         self.dropout = nn.Dropout(0.5)
+#
+#     def forward(self, x):
+#         x = self.fc1(x)
+#         x = self.relu(x)
+#         x = self.dropout(x)
+#         x = self.fc2(x)
+#         return x
+
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(ProteinFamilyClassifier, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 128)
-        self.fc2 = nn.Linear(128, output_dim)
+        self.fc1 = nn.Linear(input_dim, 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, output_dim)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.5)
 
@@ -52,7 +68,12 @@ class ProteinFamilyClassifier(nn.Module):
         x = self.relu(x)
         x = self.dropout(x)
         x = self.fc2(x)
+        x = self.relu(x)
+        x = self.dropout(x)
+        x = self.fc3(x)
         return x
+
+
 
 # Define hyperparameters
 input_dim = X_train.shape[1]
