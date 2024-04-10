@@ -38,7 +38,7 @@ X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train)
 y_test_tensor = torch.tensor(y_test)
 
-# Define a neural network architecture with more hidden layers and dropout
+# Define a neural network architecture with more hidden layers and increased dropout rate
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(ProteinFamilyClassifier, self).__init__()
@@ -46,8 +46,8 @@ class ProteinFamilyClassifier(nn.Module):
         self.fc2 = nn.Linear(512, 256)
         self.fc3 = nn.Linear(256, 128)
         self.fc4 = nn.Linear(128, output_dim)
-        self.relu = nn.ReLU()
-        self.dropout = nn.Dropout(0.5)
+        self.relu = nn.LeakyReLU()  # Change activation function
+        self.dropout = nn.Dropout(0.7)  # Increase dropout rate
 
     def forward(self, x):
         x = self.fc1(x)
