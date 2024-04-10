@@ -12,6 +12,7 @@ data/encoded_features_uncurated.pickle
 
 data_v2/
 data_v2/UnCuratedArchs_culled.csv
+data_v3/
 
 scripts_v3/**/pretrained_model
 scripts_v3/**/results
