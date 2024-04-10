@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
 import os
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 # Load the embeddings DataFrame
 DATA_DIR = '../data_v2'
@@ -12,7 +13,7 @@ FILE_DATAFRAME = os.path.join(DATA_DIR, 'Dataframe_CurName_features_embedding_bi
 df = pd.read_pickle(FILE_DATAFRAME)
 
 # Extract embeddings and labels
-embeddings = df['features'].tolist()
+embeddings = np.array(df['features'].tolist())
 labels = df['CurName'].tolist()
 
 # Encode protein family names as integers
