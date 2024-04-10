@@ -60,7 +60,8 @@ class ProteinFamilyClassifier(nn.Module):
 
 # Define hyperparameters
 input_dim = X_train.shape[1]
-output_dim = len(np.unique(y_train))
+# output_dim = len(np.unique(y_train))
+output_dim = len(np.unique(encoded_labels))
 
 # Initialize the model, loss function, and optimizer
 model = ProteinFamilyClassifier(input_dim, output_dim)
