@@ -14,6 +14,9 @@ df = pd.read_pickle(FILE_DATAFRAME)
 embeddings = df['features'].tolist()
 labels = df['CurName'].tolist()
 
+print(embeddings[0:5])
+print(labels[0:5])
+
 # Define a simple feedforward neural network
 class ProteinFamilyClassifier(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
