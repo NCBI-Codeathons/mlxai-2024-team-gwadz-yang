@@ -30,20 +30,6 @@ def main():
             for sf in super_fams.split(' '):
                 all_superfamilies.add(sf)
 
-    # for index, row in df_2.iterrows():
-    #     specific_arch = row['SpecificArch']
-    #     super_fams = row['superfamilyarch']
-    #
-    #     if not pd.isna(specific_arch):
-    #         for cd in specific_arch.split():
-    #             if cd not in all_cds:
-    #                 all_cds.append(cd)
-    #
-    #     if not pd.isna(super_fams):
-    #         for sf in super_fams.split():
-    #             if sf not in all_superfamilies:
-    #                 all_superfamilies.append(sf)
-
     all_cds = sorted(list(all_cds))
     all_superfamilies = sorted(list(all_superfamilies))
 
@@ -57,8 +43,7 @@ def main():
     # open the output file 1 for writing
     with open(output_file_1, 'w') as f:
         # write the header
-        # f.write('CurName_simplified\t')
-        f.write('CurName\t')
+        f.write('CurName_simplified\t')
         to_write = '\t'.join(all_cds)
         f.write(to_write)
         f.write('\t')
