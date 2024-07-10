@@ -1,10 +1,47 @@
 import os
 import pandas as pd
 
+def write_to_file(f, ALL_CDS, ALL_SUPERFAMS, COLLUMS, DF):
+    f.write(COLLUMS[0] + '\t')
+    to_write = '\t'.join(ALL_CDS)
+    f.write(to_write)
+    f.write('\t')
+    to_write = '\t'.join(ALL_SUPERFAMS)
+    f.write(to_write)
+    f.write('\n')
 
-def create_one_hot_encoding_file(input_file, cols=['CurName', 'Superfamilies', 'SpecificArch']):
+    for index, row in DF.iterrows():
+        f.write(f"{row[COLLUMS[0]]}")
+        f.write('\t')
+
+        specific_arch = row[COLLUMS[1]]
+        super_fams = row[COLLUMS[2]]
+
+        arr = [0] * len(ALL_CDS)
+        if not pd.isna(specific_arch):
+            for cd in specific_arch.split(' '):
+                if cd in ALL_CDS:
+                    arr[ALL_CDS.index(cd)] = 1
+
+        to_write = '\t'.join(map(str, arr))
+        f.write(to_write)
+        f.write('\t')
+
+        arr = [0] * len(ALL_SUPERFAMS)
+        if not pd.isna(super_fams):
+            for sf in super_fams.split(' '):
+                if sf in ALL_SUPERFAMS:
+                    arr[ALL_SUPERFAMS.index(sf)] = 1
+
+        to_write = '\t'.join(map(str, arr))
+        f.write(to_write)
+        f.write('\n')
+
+
+def create_one_hot_encoding_file(curated_file, uncurated_file):
     # read the input file
-    df = pd.read_csv(input_file, usecols=cols, sep='\t')
+    cols = ['CurName', 'SpecificArch', 'Superfamilies']
+    df = pd.read_csv(curated_file, usecols=cols, sep='\t')
     all_cds = set()
     all_superfamilies = set()
 
@@ -28,63 +65,53 @@ def create_one_hot_encoding_file(input_file, cols=['CurName', 'Superfamilies', '
     print('The number of SuperFams:', len(all_superfamilies), all_superfamilies[:5])
 
     # get the directory of the input file
-    output_dir = os.path.dirname(input_file)
-    output_file = os.path.join(output_dir, 'Matrix_one_hot_encoding.tsv')
+    output_dir = os.path.dirname(curated_file)
+    output_file = os.path.join(output_dir, 'curated_one_hot_encoding_matrix.tsv')
 
-    # open the output file for writing
     with open(output_file, 'w') as f:
-        f.write(cols[0] + '\t')
-        to_write = '\t'.join(all_cds)
-        f.write(to_write)
-        f.write('\t')
-        to_write = '\t'.join(all_superfamilies)
-        f.write(to_write)
-        f.write('\n')
+        write_to_file(f, all_cds, all_superfamilies, cols, df)
 
-        # iterate over the rows of the dataframe
-        for index, row in df.iterrows():
-            cur_name = f"{row[cols[0]]}"
-            f.write(cur_name)
-            f.write('\t')
+    print(f'One-hot encoding file for curated data was created: {output_file}')
 
-            specific_arch = row[cols[2]]
-            super_fams = row[cols[1]]
+    if uncurated_file:
+        output_dir = os.path.dirname(uncurated_file)
+        output_file = os.path.join(output_dir, 'uncurated_one_hot_encoding_matrix.tsv')
 
-            arr = [0] * len(all_cds)
-            if not pd.isna(specific_arch):
-                for cd in specific_arch.split(' '):
-                    if cd in all_cds:
-                        arr[all_cds.index(cd)] = 1
+        cols = ['ArchId', 'SpecificArch', 'Superfamilies']
+        df = pd.read_csv(uncurated_file, usecols=cols, sep='\t')
 
-            to_write = '\t'.join(map(str, arr))
-            f.write(to_write)
-            f.write('\t')
+        with open(output_file, 'w') as f:
+            write_to_file(f, all_cds, all_superfamilies, cols, df)
 
-            arr = [0] * len(all_superfamilies)
-            if not pd.isna(super_fams):
-                for sf in super_fams.split(' '):
-                    if sf in all_superfamilies:
-                        arr[all_superfamilies.index(sf)] = 1
+        print(f'One-hot encoding file for uncurated data was created: {output_file}')
 
-            to_write = '\t'.join(map(str, arr))
-            f.write(to_write)
-            f.write('\n')
 
-    print(f'One-hot encoding file created: {output_file}')
+
 
 
 if __name__ == '__main__':
     import sys
+    import argparse
 
-    if len(sys.argv) < 2:
-        print('Usage: python one-hot-encoding-new.py <input_file>')
+    # add arguments to the script
+    parser = argparse.ArgumentParser(description='Create one-hot encoding file for curated and uncurated data')
+    parser.add_argument('curated_file', help='The path to the curated file')
+    parser.add_argument('--uncurated_file', help='The path to the uncurated file')
+
+    # parse the arguments
+    args = parser.parse_args()
+    curated_file = args.curated_file
+    uncurated_file = args.uncurated_file
+
+    # Check if the curated file exists
+    if not os.path.isfile(curated_file):
+        print(f"Error: The curated file '{curated_file}' does not exist.")
         sys.exit(1)
 
-    input_file = sys.argv[1]
-    # validate the input file
-    if not os.path.exists(input_file):
-        print(f'File not found: {input_file}')
+    # If uncurated file is provided, check if it exists
+    if uncurated_file and not os.path.isfile(uncurated_file):
+        print(f"Error: The uncurated file '{uncurated_file}' does not exist.")
         sys.exit(1)
 
     # create the one-hot encoding file
-    create_one_hot_encoding_file(input_file)
+    create_one_hot_encoding_file(curated_file, uncurated_file)
