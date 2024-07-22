@@ -47,8 +47,8 @@ def create_one_hot_encoding_file(curated_file, uncurated_file):
 
     # populate the list of all CDs and superfamilies
     for index, row in df.iterrows():
-        specific_arch = row[cols[2]]
-        super_fams = row[cols[1]]
+        specific_arch = row[cols[1]]
+        super_fams = row[cols[2]]
 
         if not pd.isna(specific_arch):
             for cd in specific_arch.split(' '):
