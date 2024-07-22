@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 
-def write_to_file(f, ALL_CDS, ALL_SUPERFAMS, COLLUMS, DF):
-    f.write(COLLUMS[0] + '\t')
+def write_to_file(f, ALL_CDS, ALL_SUPERFAMS, COLUMNS, DF):
+    f.write(COLUMNS[0] + '\t')
     to_write = '\t'.join(ALL_CDS)
     f.write(to_write)
     f.write('\t')
@@ -11,11 +11,11 @@ def write_to_file(f, ALL_CDS, ALL_SUPERFAMS, COLLUMS, DF):
     f.write('\n')
 
     for index, row in DF.iterrows():
-        f.write(f"{row[COLLUMS[0]]}")
+        f.write(f"{row[COLUMNS[0]]}")
         f.write('\t')
 
-        specific_arch = row[COLLUMS[1]]
-        super_fams = row[COLLUMS[2]]
+        specific_arch = row[COLUMNS[1]]
+        super_fams = row[COLUMNS[2]]
 
         arr = [0] * len(ALL_CDS)
         if not pd.isna(specific_arch):
@@ -100,18 +100,18 @@ if __name__ == '__main__':
 
     # parse the arguments
     args = parser.parse_args()
-    curated_file = args.curated_file
-    uncurated_file = args.uncurated_file
+    _curated_file = args.curated_file
+    _uncurated_file = args.uncurated_file
 
     # Check if the curated file exists
-    if not os.path.isfile(curated_file):
-        print(f"Error: The curated file '{curated_file}' does not exist.")
+    if not os.path.isfile(_curated_file):
+        print(f"Error: The curated file '{_curated_file}' does not exist.")
         sys.exit(1)
 
     # If uncurated file is provided, check if it exists
-    if uncurated_file and not os.path.isfile(uncurated_file):
-        print(f"Error: The uncurated file '{uncurated_file}' does not exist.")
+    if _uncurated_file and not os.path.isfile(_uncurated_file):
+        print(f"Error: The uncurated file '{_uncurated_file}' does not exist.")
         sys.exit(1)
 
     # create the one-hot encoding file
-    create_one_hot_encoding_file(curated_file, uncurated_file)
+    create_one_hot_encoding_file(_curated_file, _uncurated_file)
